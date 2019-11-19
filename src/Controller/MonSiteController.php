@@ -9,12 +9,16 @@ class MonSiteController extends AbstractController
 {
     public function index()
     {
-        return $this->render('mon_site/index.html.twig');
+        return $this->render('mon_site/index.html.twig', [
+            'controller_name' => 'MonSiteController',
+        ]);
     }
 
     public function pageEntreprises()
     {
-        return $this->render('mon_site/pageEntreprise.html.twig');
+        return $this->render('mon_site/pageEntreprise.html.twig', [
+            'controller_name' => 'MonSiteController',
+        ]);
     }
 
     public function pageFormations()
@@ -24,10 +28,11 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function pageStages()
+    public function pageStages($id)
     {
         return $this->render('mon_site/pageStages.html.twig', [
             'controller_name' => 'MonSiteController',
+            'id' => $id,
         ]);
     }
 
