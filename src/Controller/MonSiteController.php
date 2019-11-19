@@ -9,16 +9,12 @@ class MonSiteController extends AbstractController
 {
     public function index()
     {
-        return $this->render('mon_site/index.html.twig', [
-            'controller_name' => 'MonSiteController',
-        ]);
+        return $this->render('mon_site/index.html.twig');
     }
 
     public function pageEntreprises()
     {
-        return $this->render('mon_site/pageEntreprise.html.twig', [
-            'controller_name' => 'MonSiteController',
-        ]);
+        return $this->render('mon_site/pageEntreprise.html.twig');
     }
 
     public function pageFormations()

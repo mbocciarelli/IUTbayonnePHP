@@ -1,16 +1,16 @@
-index:
+Accueil:
   path: /
-  controller: App\Controller\DefaultController::accueil
+  controller: App\Controller\MonSiteController::index
 
-pageEntreprises:
+Entreprises:
   path: /entreprises
-  controller: App\Controller\DefaultController::entreprises
+  controller: App\Controller\MonSiteController::pageEntreprises
 
-pageFormations:
+Formations:
   path: /formations
-  controller: App\Controller\DefaultController::formations
+  controller: App\Controller\MonSiteController::pageFormations
 
-pageStages:
+Stages:
   path: /stages
-  controller: App\Controller\DefaultController::stages
+  controller: App\Controller\MonSiteController::pageStages
 
