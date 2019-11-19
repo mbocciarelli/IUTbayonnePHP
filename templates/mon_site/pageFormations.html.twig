@@ -9,8 +9,16 @@
 </style>
 {% endblock %}
 
+{% block menu %}
+<ul>
+    <li>
+        <a href="{{path('Accueil')}}">Retour Accueil</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block contenu %}
 <div class="example-wrapper">
-    <h1>Cette page affichera la liste des formations de l'IUT</h1>
+    <h1>Sélectionner une formation : </h1>
 </div>
 {% endblock %}

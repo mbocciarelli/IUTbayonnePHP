@@ -9,8 +9,34 @@
 </style>
 {% endblock %}
 
+{% block menu %}
+<ul>
+    <li>
+        <a href="{{path('Accueil')}}">Retour Accueil</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block contenu %}
 <div class="example-wrapper">
-    <h1>Cette page affichera le descriptif du stage ayant pour identifiant {{id}}</h1>
+    <h1>Stage ayant l'id : {{id}}</h1>
+
+    <p>
+    <h3>Entreprise : </h3>
+    <ul>
+        <li> Nom : </li>
+        <li> Activite : </li>
+        <li> Adresse : </li>
+    </ul>
+    </p>
+    <p>
+    Description :
+    </p>
+    <p>
+    Formations :
+    </p>
+    <p>
+    Mail de contact :
+    </p>
 </div>
 {% endblock %}

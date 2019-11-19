@@ -9,9 +9,20 @@
 </style>
 {% endblock %}
 
+{% block menu %}
+<ul>
+    <li>
+        <a href="{{path('Entreprises')}}">Liste des entreprises</a>
+    </li>
+    <li>
+        <a href="{{path('Formations')}}">Liste des Formations</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block contenu %}
 <div class="example-wrapper">
-    <h1>Bienvenue sur la page d'accueil de Prostages</h1>
+    <h1>Sélectionner un stage :</h1>
 </div>
 
 
