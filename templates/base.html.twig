@@ -2,23 +2,224 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Page {% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>
+            {% block title %}
+                Page
+            {% endblock %}
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- BLOC DES FEUILLES DE STYLE -->
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% endblock %}
+
     </head>
     <body>
+        <div class="container-fluid">
+        <!-- BLOC DU SLIDER -->
         {% block slider %}
-        <h1>--------------- SLIDER ---------------<h1>
+
         {% endblock %}
+
+
+        <!-- BLOC DU MENU -->
         {% block menu %}
-        <h1>--------------- MENU ---------------<h1>
+        <div class="row">
+          <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
         {% endblock %}
+
+
+        <!-- BLOC DU CONTENU -->
         {% block contenu %}
-        <h1>--------------- CONTENU ---------------<h1>
+        <div class="row" style="margin-top:25px;">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                Liste des stages disponibles
+              </div>
+              <div class="card-body">
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Id
+                      </th>
+                      <th>
+                        Titre
+                      </th>
+                      <th>
+                        Entreprise
+                      </th>
+                      <th>
+                        Formation
+                      </th>
+                      <th>
+                        Accès
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        1
+                      </td>
+                      <td>
+                        TB - Monthly
+                      </td>
+                      <td>
+                        01/04/2012
+                      </td>
+                      <td>
+                        Default
+                      </td>
+                      <td>
+                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        2
+                      </td>
+                      <td>
+                        TB - Monthly
+                      </td>
+                      <td>
+                        01/04/2012
+                      </td>
+                      <td>
+                        Approved
+                      </td>
+                      <td>
+                        <a href="{{path('Stages',{id:2})}}">Plus d'infos
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        3
+                      </td>
+                      <td>
+                        TB - Monthly
+                      </td>
+                      <td>
+                        02/04/2012
+                      </td>
+                      <td>
+                        Declined
+                      </td>
+                      <td>
+                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        4
+                      </td>
+                      <td>
+                        TB - Monthly
+                      </td>
+                      <td>
+                        03/04/2012
+                      </td>
+                      <td>
+                        Pending
+                      </td>
+                      <td>
+                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        5
+                      </td>
+                      <td>
+                        TB - Monthly
+                      </td>
+                      <td>
+                        04/04/2012
+                      </td>
+                      <td>
+                        Call in to confirm
+                      </td>
+                      <td>
+                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endblock %}
+
+
+        <!-- BLOC DU PIED DE PAGE -->
         {% block footer %}
-        <h1>--------------- FOOTER ---------------<h1>
+        <div class="row" style="bottom:0; position: fixed; width: 100%; text-align:center;">
+          <div class="col-md-4">
+            <img alt="Bootstrap Image Preview" src="https://i1.wp.com/www.dutgea.com/wp-content/uploads/2015/09/Logo-IUT-Bayonne-Pays-Basque.jpg?resize=250%2C166" class="rounded-circle" />
+          </div>
+          <div class="col-md-4 align-self-center">
+            <p class="text-secondary">
+              Site destiné à l'apprentissage de l'utilisation de Symfony
+            </p>
+          </div>
+          <div class="col-md-4 align-self-center">
+            <p class="text-secondary">
+              Développé par Mathieu BOCCIARELLI <BR>
+              TD2 - TP3
+            </p>
+          </div>
+        </div>
         {% endblock %}
+
+        </div>
+
+
+        <!-- BLOC JAVASCRIPT -->
         {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         {% endblock %}
     </body>
 </html>

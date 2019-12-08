@@ -2,41 +2,27 @@
 
 {% block title %}{{parent()}} Stages{% endblock %}
 
-{% block stylesheets %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-{% endblock %}
-
-{% block menu %}
-<ul>
-    <li>
-        <a href="{{path('Accueil')}}">Retour Accueil</a>
-    </li>
-</ul>
-{% endblock %}
-
 {% block contenu %}
-<div class="example-wrapper">
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
     <h1>Stage ayant l'id : {{id}}</h1>
-
-    <p>
-    <h3>Entreprise : </h3>
+  </li>
+  <li class="list-group-item">
+    Entreprise :
     <ul>
         <li> Nom : </li>
         <li> Activite : </li>
         <li> Adresse : </li>
     </ul>
-    </p>
-    <p>
-    Description :
-    </p>
-    <p>
+  </li>
+  <li class="list-group-item">
+    Description : La description...
+  </li>
+  <li class="list-group-item">
     Formations :
-    </p>
-    <p>
+  </li>
+  <li class="list-group-item">
     Mail de contact :
-    </p>
-</div>
+  </li>
+</ul>
 {% endblock %}
