@@ -14,7 +14,7 @@
      <a class="nav-link" href="{{path('Formations')}}">Formations</a>
   </li>
   <li class="nav-item active">
-     <a class="nav-link" href="{{path('Stages' , {'id': id})}}">Stage</a>
+     <a class="nav-link" href="{{path('Stages' , {'id': stage.id})}}">Stage</a>
   </li>
 {% endblock %}
 
@@ -22,27 +22,33 @@
 {% block contenu %}
 <ul class="list-group list-group-flush" style="margin-top:75px;">
   <li class="list-group-item">
-    <h1>Stage n°{{id}}</h1>
+    <h1>Stage n°{{stage.id}}</h1>
   </li>
   <li class="list-group-item">
-    Titre : titre_du_stage
+    Titre : {{stage.titre}}
   </li>
   <li class="list-group-item">
     Entreprise :
     <ul>
-        <li> Nom : </li>
-        <li> Activite : </li>
-        <li> Adresse : </li>
+        <li> Nom : {{stage.entreprises.nom}}</li>
+        <li> Activite : {{stage.entreprises.activite}}</li>
+        <li> Adresse : {{stage.entreprises.adresse}}</li>
+        <li> Site : {{stage.entreprises.site}}</li>
     </ul>
   </li>
   <li class="list-group-item">
-    Description : La description...
+    Description : {{stage.description}}
   </li>
   <li class="list-group-item">
     Formations :
+    <ul>
+        {% for formation in stage.formations %}
+          <li>{{formation.nomComplet}} ({{formation.libelle}})</li>
+        {% endfor %}
+    </ul>
   </li>
   <li class="list-group-item">
-    Mail de contact :
+    Mail de contact : {{stage.mailContact}}
   </li>
 </ul>
 {% endblock %}

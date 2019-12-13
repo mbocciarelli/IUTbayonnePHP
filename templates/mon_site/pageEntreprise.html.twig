@@ -58,10 +58,10 @@
         {{entreprise.adresse}}
       </td>
       <td>
-        <a href=".{{entreprise.site}}.">{{entreprise.site}}
+        <a href="{{entreprise.site}}">{{entreprise.site}}
       </td>
       <td>
-        <a href="#">Liste des stages
+        <a href="{{path('Entreprises', {id: entreprise.id})}}">Liste des stages
       </td>
     </tr>
   {% endfor %}

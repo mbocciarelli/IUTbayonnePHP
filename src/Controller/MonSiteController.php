@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\Stage;
 use App\Entity\Entreprise;
@@ -33,6 +34,8 @@ class MonSiteController extends AbstractController
 
     public function pageFormations()
     {
+      $request = Request::createFromGlobals();
+
       $repoFormations = $this->getDoctrine()->getRepository(Formation::class);
       $listeFormations = $repoFormations->findAll();
 
@@ -43,9 +46,11 @@ class MonSiteController extends AbstractController
 
     public function pageStages($id)
     {
+      $repoStages = $this->getDoctrine()->getRepository(Stage::class);
+      $stage = $repoStages->findOneBy(['id' => $id]);
+
         return $this->render('mon_site/pageStages.html.twig', [
-            'controller_name' => 'MonSiteController',
-            'id' => $id,
+            'stage' => $stage,
         ]);
     }
 
