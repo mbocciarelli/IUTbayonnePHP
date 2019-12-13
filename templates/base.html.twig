@@ -27,7 +27,7 @@
         {% block menu %}
         <div class="row">
           <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark fixed-top">
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
 
         <!-- BLOC DU CONTENU -->
         {% block contenu %}
-        <div class="row" style="margin-top:25px;">
+        <div class="row" style="margin-top:75px;">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -61,23 +61,12 @@
 
                   {% endblock %}
                 </table>
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+
+                {% block nextTuple %}
+                
+                {% endblock %}
+
+
               </div>
             </div>
           </div>
@@ -87,7 +76,7 @@
 
         <!-- BLOC DU PIED DE PAGE -->
         {% block footer %}
-        <div class="row" style="bottom:0; position: fixed; width: 100%; text-align:center;">
+        <div class="row" style="bottom:0; width: 100%; text-align:center;">
           <div class="col-md-4">
             <img alt="Bootstrap Image Preview" src="https://i1.wp.com/www.dutgea.com/wp-content/uploads/2015/09/Logo-IUT-Bayonne-Pays-Basque.jpg?resize=250%2C166" class="rounded-circle" />
           </div>

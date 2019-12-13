@@ -17,3 +17,53 @@
 {% block titreContenu %}
   Liste des Entreprises
 {% endblock %}
+
+
+{% block tableauValue %}
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Nom
+      </th>
+      <th>
+        Activite
+      </th>
+      <th>
+        Adresse
+      </th>
+      <th>
+        Site
+      </th>
+      <th>
+        Accès
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for entreprise in listeEntreprises %}
+    <tr>
+      <td>
+        {{entreprise.id}}
+      </td>
+      <td>
+        {{entreprise.nom}}
+      </td>
+      <td>
+        {{entreprise.activite}}
+      </td>
+      <td>
+        {{entreprise.adresse}}
+      </td>
+      <td>
+        <a href=".{{entreprise.site}}.">{{entreprise.site}}
+      </td>
+      <td>
+        <a href="#">Liste des stages
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+{% endblock %}

@@ -13,4 +13,3 @@ Formations:
 Stages:
   path: /stages/{id}
   controller: App\Controller\MonSiteController::pageStages
-

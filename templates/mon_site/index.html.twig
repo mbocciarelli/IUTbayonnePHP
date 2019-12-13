@@ -39,90 +39,49 @@
     </tr>
   </thead>
   <tbody>
+  {% for stage in listeStages %}
     <tr>
       <td>
-        1
+        {{stage.id}}
       </td>
       <td>
-        TB - Monthly
+        {{stage.titre}}
       </td>
       <td>
-        01/04/2012
+        {{stage.entreprises.nom}}
       </td>
       <td>
-        Default
+        <ul>
+          {%for formation in stage.formations %}
+            <li>{{formation.libelle}}</li>
+          {% endfor %}
+        </ul>
       </td>
       <td>
         <a href="{{path('Stages',{id:1})}}">Plus d'infos
       </td>
     </tr>
-    <tr>
-      <td>
-        2
-      </td>
-      <td>
-        TB - Monthly
-      </td>
-      <td>
-        01/04/2012
-      </td>
-      <td>
-        Approved
-      </td>
-      <td>
-        <a href="{{path('Stages',{id:2})}}">Plus d'infos
-      </td>
-    </tr>
-    <tr>
-      <td>
-        3
-      </td>
-      <td>
-        TB - Monthly
-      </td>
-      <td>
-        02/04/2012
-      </td>
-      <td>
-        Declined
-      </td>
-      <td>
-        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-      </td>
-    </tr>
-    <tr>
-      <td>
-        4
-      </td>
-      <td>
-        TB - Monthly
-      </td>
-      <td>
-        03/04/2012
-      </td>
-      <td>
-        Pending
-      </td>
-      <td>
-        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-      </td>
-    </tr>
-    <tr>
-      <td>
-        5
-      </td>
-      <td>
-        TB - Monthly
-      </td>
-      <td>
-        04/04/2012
-      </td>
-      <td>
-        Call in to confirm
-      </td>
-      <td>
-        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-      </td>
-    </tr>
+  {% endfor %}
   </tbody>
+{% endblock %}
+
+
+{% block nextTuple %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 {% endblock %}

@@ -17,3 +17,41 @@
 {% block titreContenu %}
   Liste des Formations
 {% endblock %}
+
+
+{% block tableauValue %}
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Libelle
+      </th>
+      <th>
+        Nom complet
+      </th>
+      <th>
+        Accès
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for formation in listeFormations %}
+    <tr>
+      <td>
+        {{formation.id}}
+      </td>
+      <td>
+        {{formation.libelle}}
+      </td>
+      <td>
+        {{formation.nomComplet}}
+      </td>
+      <td>
+        <a href="#">Liste des stages
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+{% endblock %}

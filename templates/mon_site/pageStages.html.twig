@@ -2,10 +2,27 @@
 
 {% block title %}{{parent()}} Stages{% endblock %}
 
+
+{% block navbar %}
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
+  </li>
+  <li class="nav-item active">
+     <a class="nav-link" href="{{path('Stages' , {'id': id})}}">Stage</a>
+  </li>
+{% endblock %}
+
+
 {% block contenu %}
-<ul class="list-group list-group-flush">
+<ul class="list-group list-group-flush" style="margin-top:75px;">
   <li class="list-group-item">
-    <h1>Stage ayant l'id : {{id}}</h1>
+    <h1>Stage n°{{id}}</h1>
   </li>
   <li class="list-group-item">
     Titre : titre_du_stage
