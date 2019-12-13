@@ -1,3 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{parent()}} Formations{% endblock %}
+
+{% block navbar %}
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
+  </li>
+  <li class="nav-item active">
+     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
+  </li>
+{% endblock %}
+
+{% block titreContenu %}
+  Liste des Formations
+{% endblock %}

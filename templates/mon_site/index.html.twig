@@ -1,3 +1,128 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{parent()}} Accueil{% endblock %}
+
+{% block navbar %}
+  <li class="nav-item active">
+     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
+  </li>
+{% endblock %}
+
+{% block titreContenu %}
+  Liste des Stages disponibles
+{% endblock %}
+
+{% block tableauValue %}
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Titre
+      </th>
+      <th>
+        Entreprise
+      </th>
+      <th>
+        Formation
+      </th>
+      <th>
+        Accès
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        TB - Monthly
+      </td>
+      <td>
+        01/04/2012
+      </td>
+      <td>
+        Default
+      </td>
+      <td>
+        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        TB - Monthly
+      </td>
+      <td>
+        01/04/2012
+      </td>
+      <td>
+        Approved
+      </td>
+      <td>
+        <a href="{{path('Stages',{id:2})}}">Plus d'infos
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        TB - Monthly
+      </td>
+      <td>
+        02/04/2012
+      </td>
+      <td>
+        Declined
+      </td>
+      <td>
+        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        TB - Monthly
+      </td>
+      <td>
+        03/04/2012
+      </td>
+      <td>
+        Pending
+      </td>
+      <td>
+        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        TB - Monthly
+      </td>
+      <td>
+        04/04/2012
+      </td>
+      <td>
+        Call in to confirm
+      </td>
+      <td>
+        <a href="{{path('Stages',{id:1})}}">Plus d'infos
+      </td>
+    </tr>
+  </tbody>
+{% endblock %}

@@ -34,15 +34,9 @@
               </button>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="navbar-nav">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
-                  </li>
+                  {% block navbar %}
+
+                  {% endblock %}
                 </ul>
               </div>
             </nav>
@@ -57,116 +51,15 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                Liste des stages disponibles
+                {% block titreContenu %}
+
+                {% endblock %}
               </div>
               <div class="card-body">
                 <table class="table table-sm table-striped">
-                  <thead>
-                    <tr>
-                      <th>
-                        Id
-                      </th>
-                      <th>
-                        Titre
-                      </th>
-                      <th>
-                        Entreprise
-                      </th>
-                      <th>
-                        Formation
-                      </th>
-                      <th>
-                        Accès
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        1
-                      </td>
-                      <td>
-                        TB - Monthly
-                      </td>
-                      <td>
-                        01/04/2012
-                      </td>
-                      <td>
-                        Default
-                      </td>
-                      <td>
-                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        2
-                      </td>
-                      <td>
-                        TB - Monthly
-                      </td>
-                      <td>
-                        01/04/2012
-                      </td>
-                      <td>
-                        Approved
-                      </td>
-                      <td>
-                        <a href="{{path('Stages',{id:2})}}">Plus d'infos
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        3
-                      </td>
-                      <td>
-                        TB - Monthly
-                      </td>
-                      <td>
-                        02/04/2012
-                      </td>
-                      <td>
-                        Declined
-                      </td>
-                      <td>
-                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        4
-                      </td>
-                      <td>
-                        TB - Monthly
-                      </td>
-                      <td>
-                        03/04/2012
-                      </td>
-                      <td>
-                        Pending
-                      </td>
-                      <td>
-                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        5
-                      </td>
-                      <td>
-                        TB - Monthly
-                      </td>
-                      <td>
-                        04/04/2012
-                      </td>
-                      <td>
-                        Call in to confirm
-                      </td>
-                      <td>
-                        <a href="{{path('Stages',{id:1})}}">Plus d'infos
-                      </td>
-                    </tr>
-                  </tbody>
+                  {% block tableauValue %}
+
+                  {% endblock %}
                 </table>
                 <nav aria-label="Page navigation example">
                   <ul class="pagination justify-content-center">

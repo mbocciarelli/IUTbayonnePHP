@@ -5,10 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Stage;
+
 class MonSiteController extends AbstractController
 {
     public function index()
     {
+      $repoStages = $this->getDoctrine()->getRepository(Stage::class);
+      $listeStages = $repoStages->findAll();
+
         return $this->render('mon_site/index.html.twig', [
             'controller_name' => 'MonSiteController',
         ]);
