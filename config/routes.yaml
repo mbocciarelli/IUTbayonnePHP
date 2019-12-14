@@ -13,3 +13,11 @@ Formations:
 Stages:
   path: /stages/{id}
   controller: App\Controller\MonSiteController::pageStages
+
+ListeStagesParEntreprise:
+  path: /entreprises/{idEntreprise}
+  controller: App\Controller\MonSiteController::ListeStagesParEntreprise
+
+ListeStagesParFormation:
+  path: /formations/{idFormation}
+  controller: App\Controller\MonSiteController::ListeStagesParFormation

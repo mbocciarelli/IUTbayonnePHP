@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{parent()}} Stage par {{type}}{% endblock %}
+
+{% block navbar %}
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Accueil')}}">Accueil</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Entreprises')}}">Entreprises</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{{path('Formations')}}">Formations</a>
+  </li>
+  <li class="nav-item active">
+      {% if type == 'Entreprise' %}
+        <a class="nav-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id})}}">Stage par {{type}}</a>
+      {% else %}
+        <a class="nav-link" href="{{path('ListeStagesParFormation', {'idFormation': id})}}">Stage par {{type}}</a>
+      {% endif %}
+
+
+  </li>
+{% endblock %}
+
+{% block titreContenu %}
+  Liste des Stages par {{type}} nommé {{name}}
+{% endblock %}
+
+{% block tableauValue %}
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Titre
+      </th>
+      <th>
+        Entreprise
+      </th>
+      <th>
+        Formation
+      </th>
+      <th>
+        Accès
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for stage in listeStages %}
+    <tr>
+      <td>
+        {{stage.id}}
+      </td>
+      <td>
+        {{stage.titre}}
+      </td>
+      <td>
+        {{stage.entreprises.nom}}
+      </td>
+      <td>
+        <ul>
+          {%for formation in stage.formations %}
+            <li>{{formation.libelle}}</li>
+          {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <a href="{{path('Stages',{id: stage.id})}}">Plus d'infos
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+{% endblock %}
+
+
+{% block nextTuple %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endblock %}

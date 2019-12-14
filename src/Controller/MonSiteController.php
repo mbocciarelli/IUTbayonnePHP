@@ -54,5 +54,34 @@ class MonSiteController extends AbstractController
         ]);
     }
 
+    public function ListeStagesParEntreprise($idEntreprise)
+    {
+      //Récupération de l'entreprise
+      $repoEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+      $entreprise = $repoEntreprise->findOneById($idEntreprise);
+
+        return $this->render('mon_site/pageListeStage.html.twig', [
+            'listeStages' => $entreprise->getStages(),
+            'type' => 'Entreprise',
+            'name' => $entreprise->getNom(),
+            'id' => $idEntreprise,
+
+        ]);
+    }
+
+    public function ListeStagesParFormation($idFormation)
+    {
+      //Récupération de la formation
+      $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
+      $formation = $repoFormation->findOneById($idFormation);
+
+        return $this->render('mon_site/pageListeStage.html.twig', [
+            'listeStages' => $formation->getStages(),
+            'type' => 'Formation',
+            'name' => $formation->getLibelle(),
+            'id' => $idFormation,
+        ]);
+    }
+
 
 }
