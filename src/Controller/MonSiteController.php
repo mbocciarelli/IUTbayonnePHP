@@ -12,13 +12,14 @@ use App\Entity\Formation;
 
 class MonSiteController extends AbstractController
 {
-    public function index()
+    public function index($pageSelected)
     {
       $repoStages = $this->getDoctrine()->getRepository(Stage::class);
       $listeStages = $repoStages->findAll();
 
         return $this->render('mon_site/index.html.twig', [
             'listeStages' => $listeStages,
+            'pageSelected' => $pageSelected,
         ]);
     }
 
@@ -54,7 +55,7 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function ListeStagesParEntreprise($idEntreprise)
+    public function ListeStagesParEntreprise($idEntreprise, $pageSelected)
     {
       //Récupération de l'entreprise
       $repoEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
@@ -65,11 +66,11 @@ class MonSiteController extends AbstractController
             'type' => 'Entreprise',
             'name' => $entreprise->getNom(),
             'id' => $idEntreprise,
-
+            'pageSelected' => $pageSelected,
         ]);
     }
 
-    public function ListeStagesParFormation($idFormation)
+    public function ListeStagesParFormation($idFormation, $pageSelected)
     {
       //Récupération de la formation
       $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
@@ -80,6 +81,7 @@ class MonSiteController extends AbstractController
             'type' => 'Formation',
             'name' => $formation->getLibelle(),
             'id' => $idFormation,
+            'pageSelected' => $pageSelected,
         ]);
     }
 

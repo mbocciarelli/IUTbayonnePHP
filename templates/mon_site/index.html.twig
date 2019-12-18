@@ -39,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-  {% for stage in listeStages %}
+  {% for stage in listeStages|slice((pageSelected-1)*10, 10) %}
     <tr>
       <td>
         {{stage.id}}
@@ -65,20 +65,54 @@
   </tbody>
 {% endblock %}
 
-
 {% block nextTuple %}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
+
+    <!-- Prendre le nombre d'élément de la listeStages -->
+    {% set nbElements = listeStages|length %}
+    {% set arrondiNbElement = nbElements|round %}
+
+    {% if pageSelected == 1 %}
     <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+        <a class="page-link" href="#" aria-label="Previous">
+    {% else %}
+    <li class="page-item">
+        <a class="page-link" href="{{path('Accueil',{'pageSelected':pageSelected-1})}}" aria-label="Previous">
+      {% endif %}
+
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+
+    <!-- Afficher la possibilité de changer l'affichage des stages avec comme critère 10 stages affichés -->
+    {% if nbElements == arrondiNbElement %}
+      {% for i in 1..(nbElements/10) %}
+
+        {% if i == pageSelected %}
+          <li class="page-item active"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for i in 1..(nbElements/10)+1 %}
+
+        {% if i == pageSelected %}
+          <li class="page-item active"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% if pageSelected > (nbElements-1)/10 %}
+    <li class="page-item disabled">
       <a class="page-link" href="#" aria-label="Next">
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="{{path('Accueil',{'pageSelected':pageSelected+1})}}" aria-label="Next">
+    {% endif %}
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

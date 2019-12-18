@@ -48,7 +48,7 @@
     </tr>
   </thead>
   <tbody>
-  {% for stage in listeStages %}
+  {% for stage in listeStages|slice((pageSelected-1)*10, 10) %}
     <tr>
       <td>
         {{stage.id}}
@@ -78,16 +78,83 @@
 {% block nextTuple %}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
+  <!-- Prendre le nombre d'élément de la listeStages -->
+  {% set nbElements = listeStages|length %}
+  {% set arrondiNbElement = nbElements|round %}
+
+  {% if pageSelected == 1 %}
+  <li class="page-item disabled">
       <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+  {% else %}
+  <li class="page-item">
+    {% if type == 'Entreprise' %}
+      <a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':pageSelected-1})}}" aria-label="Previous">
+    {% else %}
+      <a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':pageSelected-1})}}" aria-label="Previous">
+    {% endif %}
+  {% endif %}
+
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+
+  <!-- Afficher la possibilité de changer l'affichage des stages avec comme critère 10 stages affichés -->
+  {% if nbElements == arrondiNbElement %}
+    {% for i in 1..(nbElements/10) %}
+      {% if i == pageSelected %}
+
+        {% if type == 'Entreprise' %}
+          <li class="page-item active"><a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item active"><a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+
+      {% else %}
+
+        {% if type == 'Entreprise' %}
+          <li class="page-item"><a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+
+      {% endif %}
+    {% endfor %}
+
+  {% else %}
+    {% for i in 1..(nbElements/10)+1 %}
+      {% if i == pageSelected %}
+
+        {% if type == 'Entreprise' %}
+          <li class="page-item active"><a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item active"><a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+
+      {% else %}
+
+        {% if type == 'Entreprise' %}
+          <li class="page-item"><a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':i})}}">{{i}}</a></li>
+        {% endif %}
+
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if pageSelected > (nbElements-1)/10 %}
+  <li class="page-item disabled">
+    <a class="page-link" href="#" aria-label="Next">
+  {% else %}
+  <li class="page-item">
+
+    {% if type == 'Entreprise' %}
+      <a class="page-link" href="{{path('ListeStagesParEntreprise', {'idEntreprise': id , 'pageSelected':pageSelected+1})}}" aria-label="Next">
+    {% else %}
+      <a class="page-link" href="{{path('ListeStagesParFormation', {'idFormation': id , 'pageSelected':pageSelected+1})}}" aria-label="Next">
+    {% endif %}
+
+  {% endif %}
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

@@ -66,7 +66,9 @@ class AppFixtures extends Fixture
       $tableauEntreprises = array($Capgemini, $Sopra, $Enedis, $NRJ);
 
       //Création des offres de Stages
-      $nombreOffresACreer = $faker->numberBetween($min = 5, $max = 15);
+      $nombreOffresACreer = $faker->numberBetween($min = 30, $max = 50);
+
+      //Création dee $nombreOffresACreer stages
       for ($i=0; $i < $nombreOffresACreer; $i++) {
           $offre = new Stage();
           $offre->setTitre($faker->realText($maxNbChars = 45, $indexSize = 2));

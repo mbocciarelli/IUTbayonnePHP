@@ -1,6 +1,8 @@
 Accueil:
-  path: /
+  path: /{pageSelected<\d+>}
   controller: App\Controller\MonSiteController::index
+  defaults:
+        pageSelected: 1
 
 Entreprises:
   path: /entreprises
@@ -15,9 +17,13 @@ Stages:
   controller: App\Controller\MonSiteController::pageStages
 
 ListeStagesParEntreprise:
-  path: /entreprises/{idEntreprise}
+  path: /entreprises/{idEntreprise}/{pageSelected<\d+>}
   controller: App\Controller\MonSiteController::ListeStagesParEntreprise
+  defaults:
+        pageSelected: 1
 
 ListeStagesParFormation:
-  path: /formations/{idFormation}
+  path: /formations/{idFormation}/{pageSelected<\d+>}
   controller: App\Controller\MonSiteController::ListeStagesParFormation
+  defaults:
+        pageSelected: 1
