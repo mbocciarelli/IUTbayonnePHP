@@ -10,11 +10,14 @@ use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 
+use App\Repository\StageRepository;
+use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
+
 class MonSiteController extends AbstractController
 {
-    public function index($pageSelected)
+    public function index($pageSelected, StageRepository $repoStages)
     {
-      $repoStages = $this->getDoctrine()->getRepository(Stage::class);
       $listeStages = $repoStages->findAll();
 
         return $this->render('mon_site/index.html.twig', [
@@ -23,9 +26,8 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function pageEntreprises()
+    public function pageEntreprises(EntrepriseRepository $repoEntreprises)
     {
-      $repoEntreprises = $this->getDoctrine()->getRepository(Entreprise::class);
       $listeEntreprises = $repoEntreprises->findAll();
 
         return $this->render('mon_site/pageEntreprise.html.twig', [
@@ -33,11 +35,8 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function pageFormations()
+    public function pageFormations(FormationRepository $repoFormations)
     {
-      $request = Request::createFromGlobals();
-
-      $repoFormations = $this->getDoctrine()->getRepository(Formation::class);
       $listeFormations = $repoFormations->findAll();
 
         return $this->render('mon_site/pageFormations.html.twig', [
@@ -45,9 +44,8 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function pageStages($id)
+    public function pageStages($id, StageRepository $repoStages)
     {
-      $repoStages = $this->getDoctrine()->getRepository(Stage::class);
       $stage = $repoStages->findOneBy(['id' => $id]);
 
         return $this->render('mon_site/pageStages.html.twig', [
@@ -55,11 +53,10 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function ListeStagesParEntreprise($idEntreprise, $pageSelected)
+    public function ListeStagesParEntreprise($idEntreprise, $pageSelected, EntrepriseRepository $repoEntreprises)
     {
       //Récupération de l'entreprise
-      $repoEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
-      $entreprise = $repoEntreprise->findOneById($idEntreprise);
+      $entreprise = $repoEntreprises->findOneById($idEntreprise);
 
         return $this->render('mon_site/pageListeStage.html.twig', [
             'listeStages' => $entreprise->getStages(),
@@ -70,11 +67,10 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function ListeStagesParFormation($idFormation, $pageSelected)
+    public function ListeStagesParFormation($idFormation, $pageSelected, FormationRepository $repoFormations)
     {
       //Récupération de la formation
-      $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
-      $formation = $repoFormation->findOneById($idFormation);
+      $formation = $repoFormations->findOneById($idFormation);
 
         return $this->render('mon_site/pageListeStage.html.twig', [
             'listeStages' => $formation->getStages(),

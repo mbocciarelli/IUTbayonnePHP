@@ -71,20 +71,18 @@ class AppFixtures extends Fixture
       //Création dee $nombreOffresACreer stages
       for ($i=0; $i < $nombreOffresACreer; $i++) {
           $offre = new Stage();
-          $offre->setTitre($faker->realText($maxNbChars = 45, $indexSize = 2));
+          $offre->setTitre($faker->jobTitle);
           $offre->setDescription($faker->text($maxNbChars = 255));
           $offre->setMailContact($faker->safeEmail);
 
           //Définition de l'entreprise proposant le stage
           $entrepriseSelectionnee = $faker->numberBetween($min = 0, $max = 3);
-          $offre->setEntreprises($tableauEntreprises[$entrepriseSelectionnee]);
           $tableauEntreprises[$entrepriseSelectionnee]->addStage($offre);
 
           //Définition des formations proposé par la stages
           $formationsNombre = $faker->numberBetween($min = 1, $max = 3);
           $formationsSelectionnee = $faker->randomElements($array = $tableauFormation, $count = $formationsNombre);
           foreach ($formationsSelectionnee as $value) {
-            $offre->addFormation($value);
             $value->addStage($offre);
           }
 

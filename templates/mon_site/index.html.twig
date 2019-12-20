@@ -71,7 +71,7 @@
 
     <!-- Prendre le nombre d'élément de la listeStages -->
     {% set nbElements = listeStages|length %}
-    {% set arrondiNbElement = nbElements|round %}
+    {% set arrondiNbElement = nbElements/10|round %}
 
     {% if pageSelected == 1 %}
     <li class="page-item disabled">
@@ -86,8 +86,8 @@
     </li>
 
     <!-- Afficher la possibilité de changer l'affichage des stages avec comme critère 10 stages affichés -->
-    {% if nbElements == arrondiNbElement %}
-      {% for i in 1..(nbElements/10) %}
+    {% if nbElements/10 <= arrondiNbElement %}
+      {% for i in 1..arrondiNbElement %}
 
         {% if i == pageSelected %}
           <li class="page-item active"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
@@ -96,7 +96,7 @@
         {% endif %}
       {% endfor %}
     {% else %}
-      {% for i in 1..(nbElements/10)+1 %}
+      {% for i in 1..arrondiNbElement+1 %}
 
         {% if i == pageSelected %}
           <li class="page-item active"><a class="page-link" href="{{path('Accueil',{'pageSelected':i})}}">{{i}}</a></li>
