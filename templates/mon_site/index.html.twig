@@ -71,7 +71,7 @@
 
     <!-- Prendre le nombre d'élément de la listeStages -->
     {% set nbElements = listeStages|length %}
-    {% set arrondiNbElement = nbElements/10|round %}
+    {% set arrondiNbElement = (nbElements/10)|round %}
 
     {% if pageSelected == 1 %}
     <li class="page-item disabled">
