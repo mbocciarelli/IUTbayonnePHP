@@ -44,9 +44,23 @@ class MonSiteController extends AbstractController
         ]);
     }
 
-    public function pageStages($id, StageRepository $repoStages)
+    public function pageStages(Stage $stage)
     {
-      $stage = $repoStages->findOneBy(['id' => $id]);
+        //Explication et autre méthode
+        /*
+            Stage $stage --> permet de récupérer une ressource en passant en paramètre sur l'url un id
+
+            Autre méthode:
+            public function pageStages($id, StageRepository $repoStages)
+            {
+              $stage = $repoStages->findOneById($id);
+
+              return $this->render('mon_site/pageStages.html.twig', [
+                  'stage' => $stage,
+              ]);
+            }
+
+        */
 
         return $this->render('mon_site/pageStages.html.twig', [
             'stage' => $stage,
